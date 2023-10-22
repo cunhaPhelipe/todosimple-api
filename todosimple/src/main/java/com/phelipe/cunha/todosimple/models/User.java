@@ -1,4 +1,5 @@
 package com.phelipe.cunha.todosimple.models;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.persistence.*;
 import javax.persistence.Entity;
@@ -36,6 +37,7 @@ public class User {
 
 
 
+	@JsonIgnore
 	public List<Task> getTasks() {
 		return tasks;
 	}
