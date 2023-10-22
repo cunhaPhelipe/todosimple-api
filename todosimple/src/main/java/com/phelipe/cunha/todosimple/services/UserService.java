@@ -1,7 +1,6 @@
 package com.phelipe.cunha.todosimple.services;
 
 import com.phelipe.cunha.todosimple.models.User;
-import com.phelipe.cunha.todosimple.repositores.TaskRepository;
 import com.phelipe.cunha.todosimple.repositores.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,8 +13,6 @@ public class UserService {
 
 	@Autowired
 	private UserRepository userRepository;
-	@Autowired
-	private TaskRepository taskRepository;
 
 	public User findById(Long id) {
 
@@ -26,7 +23,6 @@ public class UserService {
 	@Transactional
 	public User create(User obj) {
 		obj = this.userRepository.save(obj);
-		this.taskRepository.saveAll(obj.getTasks());
 		return obj;
 	}
 
