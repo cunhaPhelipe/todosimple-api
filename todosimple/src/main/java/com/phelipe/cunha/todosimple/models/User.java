@@ -1,9 +1,7 @@
 package com.phelipe.cunha.todosimple.models;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.springframework.scheduling.config.Task;
-
 import javax.persistence.*;
+import javax.persistence.Entity;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -19,8 +17,8 @@ public class User {
     public interface UpdateUser{}
     public static final String TABLE_NAME = "user";
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
-    @Column (name = "id", unique = true)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", unique = true)
     private Long id;
 
     @Column(name = "username", length = 100, nullable = false, unique = true)
@@ -36,7 +34,18 @@ public class User {
     @Size (groups = {CreateUser.class, UpdateUser.class}, min = 8, max = 50)
     private  String password;
 
-//    private List<Task> tasks = new ArrayList<Task>();
+
+
+	public List<Task> getTasks() {
+		return tasks;
+	}
+
+	public void setTasks(List<Task> tasks) {
+		this.tasks = tasks;
+	}
+
+	@OneToMany(mappedBy = "user")
+	private List<Task> tasks = new ArrayList<Task>();
 
     public User(){
 
@@ -89,7 +98,8 @@ public class User {
 				return false;
 
 			}
-		return Objects.equals(this.id, other.id) && Objects.equals(this.username, other.username) && Objects.equals(this.password, other.getPassword());
+		return Objects.equals(this.id, other.id) && Objects.equals(this.username, other.username)
+				&& Objects.equals(this.password, other.password);
 
 	}
 
