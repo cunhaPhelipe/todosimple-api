@@ -1,12 +1,11 @@
 package com.phelipe.cunha.todosimple.services;
-
 import com.phelipe.cunha.todosimple.models.Task;
 import com.phelipe.cunha.todosimple.models.User;
 import com.phelipe.cunha.todosimple.repositores.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import javax.transaction.Transactional;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -21,6 +20,11 @@ public class TaskService {
 	public Task findById(Long id){
 		Optional<Task> task = this.taskRepository.findById(id);
 		return task.orElseThrow(() -> new RuntimeException("Tarefa não encontrada! Id: " + id + ", Tipo: " + Task.class.getName()));
+	}
+
+	public List<Task> findAllByUserId(Long userId){
+		List<Task> tasks = this.taskRepository.findByUser_Id(userId);
+		return tasks;
 	}
 
 	@Transactional
