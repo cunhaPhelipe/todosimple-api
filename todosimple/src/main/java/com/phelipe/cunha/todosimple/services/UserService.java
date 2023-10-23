@@ -1,10 +1,8 @@
 package com.phelipe.cunha.todosimple.services;
-
 import com.phelipe.cunha.todosimple.models.User;
 import com.phelipe.cunha.todosimple.repositores.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
@@ -16,7 +14,6 @@ public class UserService {
 	private UserRepository userRepository;
 
 	public User findById(Long id) {
-
 		Optional<User> user = this.userRepository.findById(id);
 		return user.orElseThrow(() -> new RuntimeException("Usuário não encontrado! Id: " + id + ", Tipo: " + User.class.getName()));
 	}
@@ -45,7 +42,6 @@ public class UserService {
 			this.userRepository.deleteById(id);
 		} catch (Exception e) {
 			throw new RuntimeException("Não é possivel excluir, usuário vinculado há outras entidades relacionadas!");
-
 		}
 
 	}

@@ -18,8 +18,6 @@ public class Task {
 	@Column(name = "id", unique = true)
 	private Long id;
 
-
-
 	@JoinColumn(name = "user_id", nullable = false, updatable = false)
 	@ManyToOne
 	private User user;
@@ -62,7 +60,6 @@ public class Task {
 		this.description = description;
 	}
 
-
 	@Override
 	public boolean equals(Object obj) {
 
@@ -82,7 +79,6 @@ public class Task {
 			}
 		return Objects.equals(this.id, other.id) && Objects.equals(this.user, other.user)
 				&& Objects.equals(this.description, other.description);
-
 	}
 
 	@Override

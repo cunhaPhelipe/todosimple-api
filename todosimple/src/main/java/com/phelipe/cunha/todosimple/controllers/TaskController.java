@@ -22,7 +22,6 @@ public class TaskController {
 	public ResponseEntity<Task> findById(@PathVariable Long id){
 		Task task = this.taskService.findById(id);
 		return  ResponseEntity.ok(task);
-
 	}
 
 	@PostMapping
@@ -51,7 +50,6 @@ public class TaskController {
 	public ResponseEntity<List<Task>> findByUserId(@PathVariable Long userId){
 		List<Task> obj = this.taskService.findAllByUserId(userId);
 		return ResponseEntity.ok().body(obj);
-
 	}
 
 }
