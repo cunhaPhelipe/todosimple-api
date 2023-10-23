@@ -12,6 +12,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
 import java.net.URI;
+import java.util.List;
 
 @RestController
 @RequestMapping("/user")
@@ -27,6 +28,10 @@ public class UserController {
 		return ResponseEntity.ok().body(user);
 	}
 
+	@GetMapping
+	public ResponseEntity<List<User>> findAll(){
+		return ResponseEntity.ok().body(userService.findAll());
+	}
 
 	@PostMapping
 	@Validated(User.CreateUser.class)
