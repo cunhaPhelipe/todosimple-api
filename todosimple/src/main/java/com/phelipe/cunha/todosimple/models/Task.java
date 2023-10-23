@@ -72,7 +72,6 @@ public class Task {
 				return false;
 			else if (!this.id.equals(other.id)) {
 				return false;
-
 			}
 		return Objects.equals(this.id, other.id) && Objects.equals(this.user, other.user)
 				&& Objects.equals(this.description, other.description);
