@@ -79,7 +79,7 @@ public class Task {
 
 	@Override
 	public int hashCode() {
-		final  int prime = 31;
+		final int prime = 31;
 		int result = 1;
 		result = prime + result + (this.id == null ? 0 : this.id.hashCode());
 		return result;
