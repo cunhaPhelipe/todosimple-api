@@ -1,6 +1,7 @@
 package com.phelipe.cunha.todosimple.controllers;
 import com.phelipe.cunha.todosimple.models.Task;
 import com.phelipe.cunha.todosimple.services.TaskService;
+import com.phelipe.cunha.todosimple.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -17,6 +18,9 @@ public class TaskController {
 
 	@Autowired
 	private TaskService taskService;
+
+	@Autowired
+	private  UserService userService;
 
 	@GetMapping("/{id}")
 	public ResponseEntity<Task> findById(@PathVariable Long id){
@@ -48,6 +52,7 @@ public class TaskController {
 
 	@GetMapping("/user/{userId}")
 	public ResponseEntity<List<Task>> findByUserId(@PathVariable Long userId){
+		userService.findById(userId);
 		List<Task> obj = this.taskService.findAllByUserId(userId);
 		return ResponseEntity.ok().body(obj);
 	}
