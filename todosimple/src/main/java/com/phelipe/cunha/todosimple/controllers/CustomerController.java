@@ -24,20 +24,21 @@ public class CustomerController {
 		return  ResponseEntity.ok().body(customer);
 	}
 
+
 	@PostMapping
 	@Validated(Customer.CreateCustomer.class)
-	public ResponseEntity<Void> create(@Valid @RequestBody Customer customer){
+	public ResponseEntity<Customer> create(@Valid @RequestBody Customer customer){
 		this.customerService.create(customer);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(customer.getId()).toUri();
-		return ResponseEntity.created(uri).build();
+		return ResponseEntity.created(uri).body(customer);
 	}
 
 	@PutMapping("/{id}")
 	@Validated(Customer.UpdateCustomer.class)
-	ResponseEntity<Void> update(@Valid @RequestBody Customer customer, @PathVariable Long id){
+	ResponseEntity<Customer> update(@Valid @RequestBody Customer customer, @PathVariable Long id){
 		customer.setId(id);
 		this.customerService.update(customer);
-		return ResponseEntity.noContent().build();
+		return ResponseEntity.ok().body(customer);
 
 	}
 }
