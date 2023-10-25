@@ -28,6 +28,8 @@ public class CustomerService {
 		Customer newObj = findById(customer.getId());
 		newObj.setName(customer.getName());
 		newObj.setEndereco(customer.getEndereco());
+		newObj.setNumero(customer.getNumero());
+		newObj.setCep(customer.getCep());
 		newObj.setComplemento(customer.getComplemento());
 		return this.customerRepository.save(newObj);
 	}
