@@ -4,6 +4,7 @@ import com.phelipe.cunha.todosimple.repositores.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -16,6 +17,8 @@ public class CustomerService {
 		Optional<Customer> customer = this.customerRepository.findById(id);
 		return customer.orElseThrow(() -> new RuntimeException("Cliente não encontrado! Id: " + id + ", Tipo: " + Customer.class.getName()));
 	}
+
+	public List<Customer> findAll(){return  customerRepository.findAll();}
 
 	@Transactional
 	public Customer create(Customer customer){

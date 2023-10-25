@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import javax.validation.Valid;
 import java.net.URI;
+import java.util.List;
 
 
 @RestController
@@ -24,6 +25,9 @@ public class CustomerController {
 		return  ResponseEntity.ok().body(customer);
 	}
 
+	@GetMapping
+	public  ResponseEntity<List<Customer>> findAll(){return ResponseEntity.ok().body(customerService.findAll());
+	}
 
 	@PostMapping
 	@Validated(Customer.CreateCustomer.class)
