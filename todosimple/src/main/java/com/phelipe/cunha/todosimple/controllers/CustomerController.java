@@ -39,6 +39,11 @@ public class CustomerController {
 		customer.setId(id);
 		this.customerService.update(customer);
 		return ResponseEntity.ok().body(customer);
+	}
 
+	@DeleteMapping("/{id}")
+	public ResponseEntity<Void> delete(@PathVariable long id){
+		this.customerService.delete(id);
+		return ResponseEntity.noContent().build();
 	}
 }

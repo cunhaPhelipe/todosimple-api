@@ -33,4 +33,11 @@ public class CustomerService {
 		newObj.setComplemento(customer.getComplemento());
 		return this.customerRepository.save(newObj);
 	}
+
+	public void delete(Long id){
+		findById(id);
+		this.customerRepository.deleteById(id);
+
+
+	}
 }
