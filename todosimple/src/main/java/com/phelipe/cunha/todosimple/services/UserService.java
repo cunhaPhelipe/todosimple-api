@@ -28,7 +28,6 @@ public class UserService {
 		return obj;
 	}
 
-
 	@Transactional
 	public User update(User obj) {
 		User newObj = findById(obj.getId());
